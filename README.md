@@ -1,0 +1,4 @@
+btcnotes
+========
+
+Bitcoin note generator
