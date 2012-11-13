@@ -1,0 +1,20 @@
+find colors used in file:
+grep "#" graphnote.svg | sed "s/.*#/#/;s/\".*//" | sort | uniq | grep -v "^#$" | grep -v "#SVGID" >graphnote-original-colors.txt
+
+make color swatch file:
+c=0; for i in `cat graphnote-original-colors.txt`; do dec_color="`echo $i | sed "s/#//;s/\(..\)/\$\(\(0x\1\)\) /g;s/^/echo /" | bash`"; pbmtext $i >/var/tmp/tmp$$hdr.pbm; (echo P3 64 64 255; for j in `seq 1 4096`; do echo $dec_color; done) >/var/tmp/tmp$$.ppm; pnmcat -tb /var/tmp/tmp$$hdr.pbm /var/tmp/tmp$$.ppm >/var/tmp/tmp$$_`printf "%03d\n" $c`.ppm; c=`echo $c + 1 | bc`; done; pnmcat -tb /var/tmp/tmp$$_*.ppm | pnmtopng -comp 9 >graphnote-original-colors.png; rm /var/tmp/tmp$$*
+
+read colors from edited swatch file:
+pngtopnm graphnote-70,0,-15.png | pnmnoraw | awk 'BEGIN {lc=0} lc%837 == 265 {printf("#%02x%02x%02x\n",$1,$2,$3)} {lc++}' >graphnote-70,0,-15.txt
+
+change colors:
+sed "`awk 'BEGIN {ln=0} {line[ln++]=$0} END {for (i=0; i<ln/2; i++) print "s/"line[i]"/"line[i+ln/2]"/g";}' graphnote-original-colors.txt graphnote-70,0,-15.txt`" graphnote.svg >graphnote-70,0,-15.svg
+
+------------------
+
+convert an SVG note design to EPS (also produces PDF as an intermediate step):
+svg2pdf graphnote.svg && gs -sDEVICE=epswrite -sOutputFile=graphnote.eps -dNOPAUSE -q - <graphnote.pdf
+
+render a QR code to EPS:
+qrencode -s 1 -l M -o - 5HzQEdP55SGjBawGCw25A14FcjegFyPtbn3xhzb1rhpxX5dZcc4 | pngtopnm | pnmtops -noshowpage -nocenter >5HzQEdP55SGjBawGCw25A14FcjegFyPtbn3xhzb1rhpxX5dZcc4.eps
+
