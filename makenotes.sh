@@ -101,8 +101,13 @@ cat <<EOF
 
 % cut lines
 
-0 400 moveto 8.5 72 mul 400 lineto .25 setlinewidth stroke
-250 0 moveto 250 11 72 mul lineto .25 setlinewidth stroke
+.25 setlinewidth
+0 33 moveto 612 33 lineto stroke
+0 400 moveto 612 400 lineto stroke
+0 768 moveto 612 768 lineto stroke
+53 0 moveto 53 792 lineto stroke
+250 0 moveto 250 792 lineto stroke
+446 0 moveto 446 792 lineto stroke
 
 % first note
 
@@ -139,7 +144,7 @@ restore
 % third note
 
 save
-448 32 translate 90 rotate
+447 32 translate 90 rotate
 EOF
 
 pick=$3
@@ -155,7 +160,7 @@ restore
 % fourth note
 
 save
-448 400 translate 90 rotate
+447 400 translate 90 rotate
 EOF
 
 pick=$4
