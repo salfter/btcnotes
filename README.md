@@ -39,8 +39,20 @@ Prerequisites
 
 This should run anywhere you can get all the tools above running.  The program
 itself is a bash shell script.  I tested and debugged it on one of my Gentoo
-Linux boxen; anything vaguely similar should work as well (even Windows with
-Cygwin, provided you have suitable binaries for the packages listed above).
+Linux boxen; anything vaguely similar should work as well.  
+
+I've also done some debugging work on Windows with Cygwin.  Ghostscript and
+NetPBM are provided by Cygwin; the other prerequisites are native Win32
+command-line apps that need to be somewhere in your PATH.  Binaries are
+available at the following locations:
+
+Cygwin: http://www.cygwin.com/
+  (make sure these packages are installed: ghostscript,
+   ghostscript-fonts-other, ghostscript-fonts-std, netpbm)
+Vanitygen: https://github.com/samr7/vanitygen/downloads
+QREncode: http://code.google.com/p/qrencode-win32/downloads/list
+  (copy qrcode.exe to qrencode.exe somewhere in your PATH)
+Pdftk: http://www.pdflabs.com/docs/install-pdftk/
   
 Usage
 -----

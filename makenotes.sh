@@ -176,6 +176,6 @@ restore
 showpage
 EOF
 ) | gs -sDEVICE=pdfwrite -dNOPAUSE -sOutputFile=job$$_tmp.pdf -q 2>&1 >/dev/null
-pdftk job$$_tmp.pdf billback.pdf output job$$.pdf
+pdftk A=job$$_tmp.pdf B=billback.pdf cat A1L B1 output job$$.pdf
 rm [15]*.eps job$$_tmp.pdf
 
