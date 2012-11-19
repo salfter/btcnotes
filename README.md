@@ -19,9 +19,14 @@ labels to protect them until they are redeemed.
 
 I chose to use the design within https://casascius.com/graphnote.zip.  The
 SVG file from this archive is included in this project.  I've also included
-the back pattern from https://casascius.com/billback.pdf.  This is appended
-to the generated notes; if your printer supports duplexing, you can crank 
-out notes in one step.
+the back pattern from https://casascius.com/billback.pdf.  I've converted it
+to billback.eps for inclusion in the output file; if your printer supports
+duplexing, you can crank out notes in one step.  
+
+Black squares will also be printed on the back of each note opposite the
+private key.  It probably wouldn't be100%  wise to rely on these squares to 
+secure the private key, but you can at least use them to line up the tamper-
+evident labels on the back.
 
 Prerequisites
 -------------
@@ -34,8 +39,6 @@ Prerequisites
   http://fukuchi.org/works/qrencode/
 * NetPBM
   http://netpbm.sourceforge.net/
-* Pdftk
-  http://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/
 
 This should run anywhere you can get all the tools above running.  The program
 itself is a bash shell script.  I tested and debugged it on one of my Gentoo
@@ -52,7 +55,6 @@ Cygwin: http://www.cygwin.com/
 Vanitygen: https://github.com/samr7/vanitygen/downloads
 QREncode: http://code.google.com/p/qrencode-win32/downloads/list
   (copy qrcode.exe to qrencode.exe somewhere in your PATH)
-Pdftk: http://www.pdflabs.com/docs/install-pdftk/
   
 Usage
 -----
@@ -62,8 +64,10 @@ denom[1-4] = 0.5|1|2|5|10
 
 This produces a PDF named job#.pdf, where # is the pid of the script when it
 ran.  Load into the PDF viewer of your choice and print.  If desired, apply
-tamper-evident labels on both sides of the private key; make sure you protect
-the private key with a 1" square of paper.
+tamper-evident labels on both sides of the private key; protect the private
+key with the 3/4" squares printed with each note.  These squares have the
+human-readable private key on them, which should face the QR code so it'll 
+still be readable when the tamper-evident label is removed.
 
 Customization
 -------------

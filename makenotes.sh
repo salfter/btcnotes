@@ -99,6 +99,21 @@ cat <<EOF
   190 7 moveto show
 } bind def
 
+/draw_cover % (privkey) x y
+{
+  3 copy
+  .25 setlinewidth
+  moveto 54 0 rlineto 0 54 rlineto -54 0 rlineto 0 -54 rlineto stroke
+  pop 
+  /Courier-New findfont 6.5 scalefont setfont
+  3 copy 3 copy 3 copy 3 copy
+  2 1 roll 5 add 2 1 roll 43 add moveto 0 11 getinterval show
+  2 1 roll 5 add 2 1 roll 35 add moveto 11 11 getinterval show
+  2 1 roll 5 add 2 1 roll 27 add moveto 22 11 getinterval show
+  2 1 roll 5 add 2 1 roll 19 add moveto 33 11 getinterval show
+  2 1 roll 5 add 2 1 roll 11 add moveto 44 7 getinterval show
+} bind def
+
 % cut lines
 
 .25 setlinewidth
@@ -125,6 +140,10 @@ cat <<EOF
 draw_note
 restore
 
+EOF
+echo \($Privkey\) 504 684 draw_cover
+
+cat <<EOF
 % second note
 
 save
@@ -141,6 +160,10 @@ cat <<EOF
 draw_note
 restore
 
+EOF
+echo \($Privkey\) 504 630 draw_cover
+
+cat <<EOF
 % third note
 
 save
@@ -157,6 +180,10 @@ cat <<EOF
 draw_note
 restore
 
+EOF
+echo \($Privkey\) 504 576 draw_cover
+
+cat <<EOF
 % fourth note
 
 save
@@ -173,9 +200,26 @@ cat <<EOF
 draw_note
 restore
 
+EOF
+echo \($Privkey\) 504 522 draw_cover
+
+cat <<EOF
+showpage
+
+save 
+
+/showpage {} bind def 
+(billback.eps) run 
+
+398 301 moveto 80 0 rlineto 0 80 rlineto -80 0 rlineto 0 -80 rlineto fill
+398 669 moveto 80 0 rlineto 0 80 rlineto -80 0 rlineto 0 -80 rlineto fill
+201 301 moveto 80 0 rlineto 0 80 rlineto -80 0 rlineto 0 -80 rlineto fill
+201 669 moveto 80 0 rlineto 0 80 rlineto -80 0 rlineto 0 -80 rlineto fill
+
+restore 
 showpage
 EOF
-) | gs -sDEVICE=pdfwrite -dNOPAUSE -sOutputFile=job$$_tmp.pdf -q 2>&1 >/dev/null
-pdftk A=job$$_tmp.pdf B=billback.pdf cat A1L B1 output job$$.pdf
-rm [15]*.eps job$$_tmp.pdf
+) | gs -sDEVICE=pdfwrite -dNOPAUSE -sOutputFile=job$$.pdf -q 2>&1 >/dev/null
+#pdftk A=job$$_tmp.pdf B=billback.pdf cat A1 B1 output job$$.pdf
+rm [15]*.eps #job$$_tmp.pdf
 
