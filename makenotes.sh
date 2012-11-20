@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Bitcoin Note Generator v0.1
+# Bitcoin Note Generator v0.2
 # Scott Alfter
 # scott@alfter.us
 # Donations: 1TipSAXbE6owdU24bcBDJKmL8JRxQe5Yu
