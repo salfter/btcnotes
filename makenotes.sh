@@ -209,7 +209,12 @@ showpage
 save 
 
 /showpage {} bind def 
+save
+8.5 72 mul 0 translate
+90 rotate
+11 8.5 div dup scale
 (billback.eps) run 
+restore
 
 398 301 moveto 80 0 rlineto 0 80 rlineto -80 0 rlineto 0 -80 rlineto fill
 398 669 moveto 80 0 rlineto 0 80 rlineto -80 0 rlineto 0 -80 rlineto fill
