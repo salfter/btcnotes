@@ -2,3 +2,8 @@ green 70,0,-15
 blue -180,0,0
 red -41,0,0
 aqua 143,0,0
+purple -125,0,0
+gray 0,-100,0 (except for 2nd (#8e6502) and last (#fdb301) swatches)
+orange -24,-14,0
+slate 143,-32,-43
+dark green 70,-100,0

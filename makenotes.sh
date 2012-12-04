@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Bitcoin Note Generator v0.2
+# Bitcoin Note Generator v0.3
 # Scott Alfter
 # scott@alfter.us
 # Donations: 1TipSAXbE6owdU24bcBDJKmL8JRxQe5Yu
@@ -8,11 +8,16 @@
 function picknote()
 {
   case "$pick" in
+	0.1) echo "(graphnote-gray.eps)";;
+	0.2) echo "(graphnote-purple.eps)";;
     0.5) echo "(graphnote.eps)";;
     1) echo "(graphnote-green.eps)";;
     2) echo "(graphnote-blue.eps)";;
     5) echo "(graphnote-red.eps)";;
     10) echo "(graphnote-aqua.eps)";;
+	20) echo "(graphnote-orange.eps)";;
+	50) echo "(graphnote-slate.eps)";;
+	100) echo "(graphnote-darkgreen.eps)";;
     *) echo "Invalid note selection"; exit 1;;
   esac
 }
@@ -20,11 +25,16 @@ function picknote()
 function picktext()
 {
   case "$pick" in
+	0.1) echo "(One-Tenth Bitcoin)";;
+	0.2) echo "(One-Fifth Bitcoin)";;
     0.5) echo "(One-Half Bitcoin)";;
     1) echo "(One Bitcoin)";;
     2) echo "(Two Bitcoins)";;
     5) echo "(Five Bitcoins)";;
     10) echo "(Ten Bitcoins)";;
+	20) echo "(Twenty Bitcoins)";;
+	50) echo "(Fifty Bitcoins)";;
+	100) echo "(One Hundred Bitcoins)";;
     *) echo "Invalid note selection"; exit 1;;
   esac
 }
@@ -93,8 +103,8 @@ cat <<EOF
   5 4 roll .75 0 0 place
   4 3 roll 35 75 place_addr
   3 2 roll 285 50 place_privkey
-  /Helvetica-Narrow findfont 40 scalefont setfont
-  2 1 roll 65 17 moveto show
+  /Helvetica-Narrow findfont 36 scalefont setfont
+  2 1 roll 63 19 moveto show
   /Helvetica-Narrow findfont 10 scalefont setfont
   190 7 moveto show
 } bind def
@@ -227,4 +237,3 @@ EOF
 ) | gs -sDEVICE=pdfwrite -dNOPAUSE -sOutputFile=job$$.pdf -q 2>&1 >/dev/null
 #pdftk A=job$$_tmp.pdf B=billback.pdf cat A1 B1 output job$$.pdf
 rm [15]*.eps #job$$_tmp.pdf
-

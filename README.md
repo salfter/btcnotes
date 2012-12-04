@@ -24,7 +24,7 @@ to billback.eps for inclusion in the output file; if your printer supports
 duplexing, you can crank out notes in one step.  
 
 Black squares will also be printed on the back of each note opposite the
-private key.  It probably wouldn't be100%  wise to rely on these squares to 
+private key.  It probably wouldn't be 100%  wise to rely on these squares to 
 secure the private key, but you can at least use them to line up the tamper-
 evident labels on the back.
 
@@ -60,7 +60,7 @@ Usage
 -----
 
 ./makenotes.sh denom1 denom2 denom3 denom4
-denom[1-4] = 0.5|1|2|5|10
+denom[1-4] = 0.1|0.2|0.5|1|2|5|10|20|50|100
 
 This produces a PDF named job#.pdf, where # is the pid of the script when it
 ran.  Load into the PDF viewer of your choice and print.  If desired, apply
