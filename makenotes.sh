@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Bitcoin Note Generator v0.3
+# Bitcoin Note Generator v0.4
 # Scott Alfter
 # scott@alfter.us
 # Donations: 1TipSAXbE6owdU24bcBDJKmL8JRxQe5Yu
@@ -8,16 +8,16 @@
 function picknote()
 {
   case "$pick" in
-	0.1) echo "(graphnote-gray.eps)";;
-	0.2) echo "(graphnote-purple.eps)";;
+    0.1) echo "(graphnote-gray.eps)";;
+    0.2) echo "(graphnote-purple.eps)";;
     0.5) echo "(graphnote.eps)";;
     1) echo "(graphnote-green.eps)";;
     2) echo "(graphnote-blue.eps)";;
     5) echo "(graphnote-red.eps)";;
     10) echo "(graphnote-aqua.eps)";;
-	20) echo "(graphnote-orange.eps)";;
-	50) echo "(graphnote-slate.eps)";;
-	100) echo "(graphnote-darkgreen.eps)";;
+    20) echo "(graphnote-orange.eps)";;
+    50) echo "(graphnote-slate.eps)";;
+    100) echo "(graphnote-darkgreen.eps)";;
     *) echo "Invalid note selection"; exit 1;;
   esac
 }
@@ -25,16 +25,16 @@ function picknote()
 function picktext()
 {
   case "$pick" in
-	0.1) echo "(One-Tenth Bitcoin)";;
-	0.2) echo "(One-Fifth Bitcoin)";;
+    0.1) echo "(One-Tenth Bitcoin)";;
+    0.2) echo "(One-Fifth Bitcoin)";;
     0.5) echo "(One-Half Bitcoin)";;
     1) echo "(One Bitcoin)";;
     2) echo "(Two Bitcoins)";;
     5) echo "(Five Bitcoins)";;
     10) echo "(Ten Bitcoins)";;
-	20) echo "(Twenty Bitcoins)";;
-	50) echo "(Fifty Bitcoins)";;
-	100) echo "(One Hundred Bitcoins)";;
+    20) echo "(Twenty Bitcoins)";;
+    50) echo "(Fifty Bitcoins)";;
+    100) echo "(One Hundred Bitcoins)";;
     *) echo "Invalid note selection"; exit 1;;
   esac
 }
@@ -57,6 +57,8 @@ function makeaddr()
 
 (
 cat <<EOF 
+% page 1
+
 % functions we need
 
 /strcat % (a) (b) -> (ab) 
@@ -100,13 +102,13 @@ cat <<EOF
 
 /draw_note % (base_note.eps) (addr) (privkey) (amt) (amt_text)
 {
-  5 4 roll .75 0 0 place
-  4 3 roll 35 75 place_addr
-  3 2 roll 285 50 place_privkey
-  /Helvetica-Narrow findfont 36 scalefont setfont
-  2 1 roll 63 19 moveto show
+  5 4 roll .71 0 0 place
+  4 3 roll 34 71 place_addr
+  3 2 roll 266 47 place_privkey
+  /Helvetica-Narrow findfont 32 scalefont setfont
+  2 1 roll 61 18 moveto show
   /Helvetica-Narrow findfont 10 scalefont setfont
-  190 7 moveto show
+  180 7 moveto show
 } bind def
 
 /draw_cover % (privkey) x y
@@ -127,17 +129,18 @@ cat <<EOF
 % cut lines
 
 .25 setlinewidth
-0 33 moveto 612 33 lineto stroke
-0 400 moveto 612 400 lineto stroke
-0 768 moveto 612 768 lineto stroke
-53 0 moveto 53 792 lineto stroke
-250 0 moveto 250 792 lineto stroke
-446 0 moveto 446 792 lineto stroke
+0 18 moveto 612 18 lineto stroke
+0 367 moveto 612 367 lineto stroke
+0 716 moveto 612 716 lineto stroke
+18 0 moveto 18 728 lineto stroke
+205 0 moveto 205 716 lineto stroke
+392 0 moveto 392 792 lineto stroke
+579 0 moveto 579 792 lineto stroke
 
 % first note
 
 save
-250 32 translate 90 rotate
+205 18 translate 90 rotate
 EOF
 
 pick=$1
@@ -151,13 +154,13 @@ draw_note
 restore
 
 EOF
-echo \($Privkey\) 504 684 draw_cover
+echo \($Privkey\) 18 716 draw_cover
 
 cat <<EOF
 % second note
 
 save
-250 400 translate 90 rotate
+205 367 translate 90 rotate
 EOF
 
 pick=$2
@@ -171,13 +174,13 @@ draw_note
 restore
 
 EOF
-echo \($Privkey\) 504 630 draw_cover
+echo \($Privkey\) 72 716 draw_cover
 
 cat <<EOF
 % third note
 
 save
-447 32 translate 90 rotate
+392 18 translate 90 rotate
 EOF
 
 pick=$3
@@ -191,13 +194,13 @@ draw_note
 restore
 
 EOF
-echo \($Privkey\) 504 576 draw_cover
+echo \($Privkey\) 126 716 draw_cover
 
 cat <<EOF
 % fourth note
 
 save
-447 400 translate 90 rotate
+392 367 translate 90 rotate
 EOF
 
 pick=$4
@@ -211,12 +214,54 @@ draw_note
 restore
 
 EOF
-echo \($Privkey\) 504 522 draw_cover
+echo \($Privkey\) 180 716 draw_cover
+
+cat <<EOF
+% fifth note
+
+save
+579 18 translate 90 rotate
+EOF
+
+pick=$5
+picknote
+makeaddr
+echo "($5)"
+picktext
+
+cat <<EOF
+draw_note
+restore
+
+EOF
+echo \($Privkey\) 234 716 draw_cover
+
+cat <<EOF
+% sixth note
+
+save
+579 367 translate 90 rotate
+EOF
+
+pick=$6
+picknote
+makeaddr
+echo "($6)"
+picktext
+
+cat <<EOF
+draw_note
+restore
+
+EOF
+echo \($Privkey\) 288 716 draw_cover
 
 cat <<EOF
 showpage
 
 save 
+
+% page 2
 
 /showpage {} bind def 
 save
@@ -226,10 +271,12 @@ save
 (billback.eps) run 
 restore
 
-398 301 moveto 80 0 rlineto 0 80 rlineto -80 0 rlineto 0 -80 rlineto fill
-398 669 moveto 80 0 rlineto 0 80 rlineto -80 0 rlineto 0 -80 rlineto fill
-201 301 moveto 80 0 rlineto 0 80 rlineto -80 0 rlineto 0 -80 rlineto fill
-201 669 moveto 80 0 rlineto 0 80 rlineto -80 0 rlineto 0 -80 rlineto fill
+441 267 moveto 80 0 rlineto 0 80 rlineto -80 0 rlineto 0 -80 rlineto fill
+253 267 moveto 80 0 rlineto 0 80 rlineto -80 0 rlineto 0 -80 rlineto fill
+65 267 moveto 80 0 rlineto 0 80 rlineto -80 0 rlineto 0 -80 rlineto fill
+441 617 moveto 80 0 rlineto 0 80 rlineto -80 0 rlineto 0 -80 rlineto fill
+253 617 moveto 80 0 rlineto 0 80 rlineto -80 0 rlineto 0 -80 rlineto fill
+65 617 moveto 80 0 rlineto 0 80 rlineto -80 0 rlineto 0 -80 rlineto fill
 
 restore 
 showpage

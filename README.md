@@ -4,12 +4,13 @@ Bitcoin Note Generator
 This is an offline Bitcoin note generator based on the work here:
 https://bitcointalk.org/index.php?topic=92969.0
 
-It produces notes in five denominations: 0.5, 1, 2, 5, and 10 BTC.  Each is
-printed in its own distinctive color.  Adding more denominations is a simple
-matter of generating a differently-colored note (or reusing one of the
-existing colors) and adding a couple of lines to the main shell script.
+It produces notes in ten denominations: 0.1, 0.2, 0.5, 1, 2, 5, 10, 20, 50,
+and 100 BTC.  Each is printed in its own distinctive color.  Adding more
+denominations is a simple matter of generating a differently-colored note
+(or reusing one of the existing colors) and adding a couple of lines to the
+main shell script.
 
-Internally, the script renders four notes at a time to PostScript, which is
+Internally, the script renders six notes at a time to PostScript, which is
 then immediately converted to PDF.  The note design started as SVG, so this 
 will allow you to print notes at as high a quality as your printer can
 deliver.  Unique addresses and private keys are generated and rendered as
@@ -59,7 +60,7 @@ QREncode: http://code.google.com/p/qrencode-win32/downloads/list
 Usage
 -----
 
-./makenotes.sh denom1 denom2 denom3 denom4
+./makenotes.sh denom1 denom2 denom3 denom4 denom5 denom6
 denom[1-4] = 0.1|0.2|0.5|1|2|5|10|20|50|100
 
 This produces a PDF named job#.pdf, where # is the pid of the script when it
