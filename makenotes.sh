@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Bitcoin Note Generator v0.4
+# Bitcoin Note Generator v0.4.1
 # Scott Alfter
 # scott@alfter.us
 # Donations: 1TipSAXbE6owdU24bcBDJKmL8JRxQe5Yu
@@ -283,4 +283,4 @@ showpage
 EOF
 ) | gs -sDEVICE=pdfwrite -dNOPAUSE -sOutputFile=job$$.pdf -q 2>&1 >/dev/null
 #pdftk A=job$$_tmp.pdf B=billback.pdf cat A1 B1 output job$$.pdf
-rm [15]*.eps #job$$_tmp.pdf
+shred [15]*.eps #job$$_tmp.pdf
