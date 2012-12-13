@@ -1,3 +1,5 @@
+included in this package:
+
 green 70,0,-15
 blue -180,0,0
 red -41,0,0
@@ -7,3 +9,14 @@ gray 0,-100,0 (except for 2nd (#8e6502) and last (#fdb301) swatches)
 orange -24,-14,0
 slate 143,-32,-43
 dark green 70,-100,0
+
+uploaded to Dropbox (https://www.dropbox.com/sh/ubt85fo4qx57s0h/m4f9Yapgt3/btcnotes):
+
+green2 70,0,-15 (except for 2nd (#8e6502) and last (#fdb301) swatches)
+blue2 -180,0,0 (except for 2nd (#8e6502) and last (#fdb301) swatches)
+red2 -41,0,0 (except for 2nd (#8e6502) and last (#fdb301) swatches)
+aqua2 143,0,0 (except for 2nd (#8e6502) and last (#fdb301) swatches)
+purple2 -125,0,0 (except for 2nd (#8e6502) and last (#fdb301) swatches)
+orange2 -24,-14,0 (except for 2nd (#8e6502) and last (#fdb301) swatches)
+slate2 143,-32,-43 (except for 2nd (#8e6502) and last (#fdb301) swatches)
+dark green2 70,-100,0 (except for 2nd (#8e6502) and last (#fdb301) swatches)
