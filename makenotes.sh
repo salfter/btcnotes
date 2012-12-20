@@ -282,5 +282,4 @@ restore
 showpage
 EOF
 ) | gs -sDEVICE=pdfwrite -dNOPAUSE -sOutputFile=job$$.pdf -q 2>&1 >/dev/null
-#pdftk A=job$$_tmp.pdf B=billback.pdf cat A1 B1 output job$$.pdf
-shred [15]*.eps #job$$_tmp.pdf
+shred -u [15]*.eps
