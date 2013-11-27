@@ -25,16 +25,16 @@ function picknote()
 function picktext()
 {
   case "$pick" in
-    0.1) echo "(One-Tenth Bitcoin)";;
-    0.2) echo "(One-Fifth Bitcoin)";;
-    0.5) echo "(One-Half Bitcoin)";;
-    1) echo "(One Bitcoin)";;
-    2) echo "(Two Bitcoins)";;
-    5) echo "(Five Bitcoins)";;
-    10) echo "(Ten Bitcoins)";;
-    20) echo "(Twenty Bitcoins)";;
-    50) echo "(Fifty Bitcoins)";;
-    100) echo "(One Hundred Bitcoins)";;
+    0.1) echo "(One-Tenth milliBitcoin)";;
+    0.2) echo "(One-Fifth milliBitcoin)";;
+    0.5) echo "(One-Half milliBitcoin)";;
+    1) echo "(One milliBitcoin)";;
+    2) echo "(Two milliBitcoins)";;
+    5) echo "(Five milliBitcoins)";;
+    10) echo "(Ten milliBitcoins)";;
+    20) echo "(Twenty milliBitcoins)";;
+    50) echo "(Fifty milliBitcoins)";;
+    100) echo "(One Hundred milliBitcoins)";;
     *) echo "Invalid note selection"; exit 1;;
   esac
 }
@@ -108,6 +108,7 @@ cat <<EOF
   /Helvetica-Narrow findfont 32 scalefont setfont
   2 1 roll 61 18 moveto show
   /Helvetica-Narrow findfont 10 scalefont setfont
+  (mBTC) 61 8 moveto show
   180 7 moveto show
 } bind def
 
