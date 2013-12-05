@@ -43,9 +43,9 @@ function makeaddr()
 {
   Address=""
   Privkey=""
-  while [ \( ${#Address} != 34 \) -o \( ${#Privkey} != 51 \) ]
+  while [ \( ${#Address} != 34 \) -o \( ${#Privkey} != 52 \) ]
   do
-    eval `vanitygen 1 2>/dev/null | egrep "Address|Privkey" | sed "s/: /=/"`
+    eval `vanitygen -F compressed 1 2>/dev/null | egrep "Address|Privkey" | sed "s/: /=/"`
   done
   for i in $Address $Privkey
   do
@@ -96,7 +96,7 @@ cat <<EOF
   save 4 1 roll 3 1 roll -3 add 3 1 roll 0 13 getinterval 3 1 roll moveto 90 rotate show restore
   save 4 1 roll 52 add 3 1 roll -1 add 3 1 roll 13 13 getinterval 3 1 roll moveto show restore
   save 4 1 roll 50 add 3 1 roll 52 add 3 1 roll 26 13 getinterval 3 1 roll moveto 270 rotate show restore
-  save 4 1 roll -3 add 3 1 roll 50 add 3 1 roll 39 12 getinterval 3 1 roll moveto 180 rotate show restore
+  save 4 1 roll -3 add 3 1 roll 50 add 3 1 roll 39 13 getinterval 3 1 roll moveto 180 rotate show restore
   3 2 roll pop -15 add 2 1 roll -15 add 2 1 roll moveto 0 80 rlineto 80 0 rlineto 0 -80 rlineto -80 0 rlineto .25 setlinewidth stroke
 } bind def
 
@@ -124,7 +124,7 @@ cat <<EOF
   2 1 roll 5 add 2 1 roll 35 add moveto 11 11 getinterval show
   2 1 roll 5 add 2 1 roll 27 add moveto 22 11 getinterval show
   2 1 roll 5 add 2 1 roll 19 add moveto 33 11 getinterval show
-  2 1 roll 5 add 2 1 roll 11 add moveto 44 7 getinterval show
+  2 1 roll 5 add 2 1 roll 11 add moveto 44 8 getinterval show
 } bind def
 
 % cut lines
@@ -283,4 +283,4 @@ restore
 showpage
 EOF
 ) | gs -sDEVICE=pdfwrite -dNOPAUSE -sOutputFile=job$$.pdf -q 2>&1 >/dev/null
-shred -u [15]*.eps
+shred -u [15KL]*.eps
