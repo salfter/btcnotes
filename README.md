@@ -5,7 +5,7 @@ This is an offline Bitcoin note generator based on the work here:
 https://bitcointalk.org/index.php?topic=92969.0
 
 It produces notes in ten denominations: 0.1, 0.2, 0.5, 1, 2, 5, 10, 20, 50,
-and 100 BTC.  Each is printed in its own distinctive color.  Adding more
+and 100 mBTC.  Each is printed in its own distinctive color.  Adding more
 denominations is a simple matter of generating a differently-colored note
 (or reusing one of the existing colors) and adding a couple of lines to the
 main shell script.
@@ -34,8 +34,8 @@ Prerequisites
 
 * Ghostscript
   http://www.ghostscript.com/
-* Vanity Address Generator
-  https://github.com/samr7/vanitygen/
+* Vanity Address Generator (with compressed-address support)
+  https://github.com/salfter/vanitygen/
 * QREncode
   http://fukuchi.org/works/qrencode/
 * NetPBM
@@ -53,7 +53,7 @@ available at the following locations:
 Cygwin: http://www.cygwin.com/
   (make sure these packages are installed: ghostscript,
    ghostscript-fonts-other, ghostscript-fonts-std, netpbm)
-Vanitygen: https://github.com/samr7/vanitygen/downloads
+Vanitygen: https://dl.dropboxusercontent.com/u/57535575/vanitygen-0.23-red-win32.zip
 QREncode: http://code.google.com/p/qrencode-win32/downloads/list
   (copy qrcode.exe to qrencode.exe somewhere in your PATH)
   
